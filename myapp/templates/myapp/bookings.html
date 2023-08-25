@@ -1,0 +1,38 @@
+
+{% extends 'myapp/base.html' %}
+{% block content %}
+<style>
+table{    width:100%;    }
+  th,td{    padding:10px;
+   border:1px solid blue;}
+   th{    background-color:yellow;
+     color:red;    }
+</style>
+<body>
+<h1>Thank you for booking in Livewire</h1>
+<h1>You ticket is booked successfully</h1>
+<table>
+  <tr>
+    <th>Bus name</th>
+    <th>From</th>
+    <th>To</th>
+    <th>nos</th>
+    <th>Price</th>
+    <th>Cost</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+  <tr>
+    <td>{{book.bus_name}}</td>
+    <td>{{book.source}}</td>
+    <td>{{book.dest}}</td>
+    <td>{{book.nos}}</td>
+    <td>{{book.price}}</td>
+    <td>{{cost}}</td>
+    <td>{{book.date}}</td>
+
+    <td>{{book.time}}</td>    </tr>
+</table>
+{% endblock %}
+</body>
+</html>

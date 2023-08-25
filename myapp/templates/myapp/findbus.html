@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'myapp/base.html' %}
+{% block content %}
+<h1>Find bus Page</h1>
+<form action="{% url 'findbus' %}" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Source" name="source" required>    <br><br>
+    <input type="text" placeholder="Destination" name="destination" required>    <br><br>
+    <input type="date" name="date">    <br><br>    <button type="submit">Search</button>
+    {{error}}
+</form>
+{% endblock %}
+
+</body>
+</html>

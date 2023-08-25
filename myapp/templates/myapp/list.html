@@ -1,0 +1,50 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<style>
+table{    width:100%;    }
+   th,td{    padding:10px;
+     border:1px solid black;}
+
+</style>
+<h1>List of Bus</h1>
+<table>
+  <thead>
+  <th>Bus ID</th>
+  <th>Bus Name</th>
+  <th>Source</th>
+  <th>Destination</th>
+  <th>No of seats</th>
+  <th>No of Remaining seats</th>
+  <th>Price</th>
+  <th>Date</th>
+  <th>Time</th>
+  </thead>
+  {% for row in bus_list %}
+  <tr>
+    <td>{{row.id}}</td>
+    <td>{{row.bus_name}}</td>
+    <td>{{row.source}}</td>
+    <td>{{row.dest}}</td>
+    <td>{{row.nos}}</td>
+    <td>{{row.rem}}</td>
+    <td>{{row.price}}</td>
+    <td>{{row.date}}</td>
+    <td>{{row.time}}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+<br>
+<div class="container">
+
+  <form action="{% url 'bookings' %} " method="post">
+
+    {% csrf_token %}
+    <h2> Book a Bus</h2>
+    <input type="text" placeholder="Bus Id" name="bus_id" required><br><br>
+     <input type="text" placeholder="No of Seats" name="no_seats" required><br><br>
+    <button type="submit"> Book Bus</button>
+  </form>
+</div>
+{% endblock %}

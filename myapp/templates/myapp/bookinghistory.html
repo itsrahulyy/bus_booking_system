@@ -1,0 +1,53 @@
+
+
+
+
+{% extends 'myapp/base.html' %}
+{% block content %}
+<style>
+table{   width:100%;    }
+th,td{    padding:10px;    border:1px solid green;}
+th{    background-color:pink;    color:blue;    }
+</style>
+<h1>Booking History</h1><table>
+ <tr>
+<th>Booikng ID</th>
+<th>Username</th>
+<th>Email</th>
+<th>Busname</th>
+ <th>Source</th>
+<th>Destination</th>
+<th>No of seats</th>
+<th>Price</th>
+<th>Date</th>
+<th>Time</th>
+ <th>Status</th>
+</tr>
+{% for z in book_list %}
+<tr>
+<td>{{z.id}}</td>
+<td>{{z.name}}
+<td>{{z.email}}</td>
+<td>{{z.bus_name}}</td>
+<td>{{z.source}}</td>
+<td>{{z.dest}}</td>
+<td>{{z.nos}}</td>
+<td>{{z.price}}</td>
+<td>{{z.date}}</td>
+<td>{{z.time}}</td>
+<td>{{z.status}}</td>
+</tr>
+{% endfor %}
+</table>
+<br>
+<br>
+<h3>Cancel a Ticket</h3>
+<form action="{% url 'cancel' %}" method="post">
+{% csrf_token %}
+<div class="container">
+<input type="number" placeholder="Enter Booked ID" name="bus_id" required>
+<br>
+<br>
+<button type="submit" >Cancel Ticket</button>
+</div>{{error}}</form>
+{% endblock %}
